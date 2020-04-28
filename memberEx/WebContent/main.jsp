@@ -1,11 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<% if(session.getAttribute("validMember")==null){ %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:if test="${empty sessionScope.validMember }">
 	<jsp:forward page="login.jsp"/>
-<% } 
-	String name=(String)session.getAttribute("name");
-	String id=(String)session.getAttribute("id");
-%>
+</c:if>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1><%=name %>¥‘ æ»≥Á«œººø‰.</h1>
+	<h1>${sessionScope.name }¥‘ æ»≥Á«œººø‰.</h1>
 	<form action="logout.jsp" method="post">
 		<input type="submit" value="∑Œ±◊æ∆øÙ">&nbsp;&nbsp;
 		<input type="button" value="¡§∫∏ºˆ¡§" onclick="javascript:window.location='modify.jsp'">
